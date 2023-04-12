@@ -4,9 +4,6 @@
     margin: 0;
     padding: 0;
       }
-   body{
-    
-   }
   .container{
     width: 100%;
     height: 100vh;
@@ -18,7 +15,7 @@
   }
   .music-player{
     background: #ffe0e5;
-    width: 500px;
+    width: 300px;
     padding: 25px 35px;
     text-align: center;
     border-radius: 20px;
@@ -57,7 +54,7 @@
   .music-player audio{
     width: 250px;
   }
-  #progress{
+  #progress{ 
     -moz-appearance:none;
     -webkit-appearance:none;
     width: 100%;
