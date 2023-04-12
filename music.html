@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="musicstyle.css" type="text/css" media="all" />
+    <script src="https://kit.fontawesome.com/6b2cc83aca.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="music-player">
+        <nav>
+          <div class="circle">
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+          <div class="circle">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </nav>
+        <img src="thumbnail.jpg" class="song-img" />
+        <h1>Obsessed (speed up)</h1>
+        <p>Muppet DJ - Topic</p>
+        <audio id="song" autoplay="false">
+          <source src="obsessed.m4a" type="audio/mpeg" />
+        </audio>
+        <input type="range" id="progress" max="214" value="0" />
+        <div class="controls">
+          <div>
+            <i class="fa-solid fa-backward"></i>
+          </div>
+          <div onclick="playPause()">
+            <i class="fa-solid fa-play" id="ctrlIcon"></i>
+          </div>
+          <div>
+            <i onclick="next()" class="fa-solid fa-forward"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript" charset="utf-8">
+      let progress = document.getElementById("progress")
+      let song = document.getElementById("song")
+      let ctrlIcon = document.getElementById("ctrlIcon")
+      song.onloadmetadata = function(){
+        progress.max = song.duration;
+        progress.vlaue = song.currentTime;
+      }
+      function playPause(){
+        if(ctrlIcon.classList.contains("fa-pause")){
+          song.pause();
+          ctrlIcon.classList.remove("fa-pause");
+          ctrlIcon.classList.add("fa-play");
+        }else{
+          song.play();
+          ctrlIcon.classList.add("fa-pause");
+          ctrlIcon.classList.remove("fa-play");
+        }
+      }
+      if(song.play()){
+        setInterval(()=>{
+          progress.value = song.currentTime;
+        },500)
+      }
+      progress.onchange = function(){
+        song.play();
+        song.currentTime = progress.value;
+        ctrlIcon.classList.add("fa-pause");
+        ctrlIcon.classList.remove("fa-play");
+      }
+      function next(){
+        
+      }
+    </script>
+  </body>
+</html>
